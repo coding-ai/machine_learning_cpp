@@ -1,5 +1,5 @@
-#include "ETL/ETL.h"
-#include "LinearRegression/LinearRegression.h"
+#include "../ETL/ETL.h"
+#include "../LinearRegression/LinearRegression.h"
 
 #include <iostream>
 #include <string>
@@ -18,7 +18,7 @@ int main(int argc, char *argv[]){
     int cols = dataset[0].size();
 
     Eigen::MatrixXd dataMat = etl.CSVtoEigen(dataset,rows,cols);
-    Eigen::MatrixXd norm = etl.Normalize(dataMat);
+    Eigen::MatrixXd norm = etl.Normalize(dataMat, true);
 
     std::cout << dataMat.rows() << std::endl;
 

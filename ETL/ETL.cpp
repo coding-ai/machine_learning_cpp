@@ -66,13 +66,25 @@ auto ETL::Std(Eigen::MatrixXd data) -> decltype(((data.array().square().colwise(
     return ((data.array().square().colwise().sum())/(data.rows()-1)).sqrt();
 }
 
-Eigen::MatrixXd ETL::Normalize(Eigen::MatrixXd data){
+Eigen::MatrixXd ETL::Normalize(Eigen::MatrixXd data, bool normalizeTarget){
 
-    auto mean = Mean(data);
-    Eigen::MatrixXd scaled_data = data.rowwise() - mean;
+    Eigen::MatrixXd dataNorm;
+    if(normalizeTarget==true) {
+        dataNorm = data;
+    } else {
+        dataNorm = data.leftCols(data.cols()-1);
+    }
+
+    auto mean = Mean(dataNorm);
+    Eigen::MatrixXd scaled_data = dataNorm.rowwise() - mean;
     auto std = Std(scaled_data);
 
     Eigen::MatrixXd norm = scaled_data.array().rowwise()/std;
+
+    if(normalizeTarget==false) {
+        norm.conservativeResize(norm.rows(), norm.cols()+1);
+        norm.col(norm.cols()-1) = data.rightCols(1);
+    }
 
     return norm;
 }

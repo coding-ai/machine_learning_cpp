@@ -4,10 +4,24 @@ In this repository, you can find all the code from my series of tutorials of Mac
 
 # Usage
 
-Fork and clone/download the repository. To compile simply run the code:
+Fork and clone/download the repository. 
 
-`g++ -std=c++11 LinearRegression/LinearRegression.cpp ETL/ETL.cpp main.cpp -o main`
+## Linear Regression
+
+To compile simply run the code:
+
+`g++ -std=c++11 LinearRegression/LinearRegression.cpp ETL/ETL.cpp main/LinearRegression.cpp -o linregr`
 
 To run and test:
 
-`./main datasets/winedata.csv ","`
+`./linregr datasets/winedata.csv ","`
+
+## Logistic Regression
+
+To compile simply run the code:
+
+`g++ -std=c++11 LogisticRegression/LogisticRegression.cpp ETL/ETL.cpp main/LogisticRegression.cpp -o logregr`
+
+To run and test:
+
+`./logregr datasets/adult_data.csv ","`
