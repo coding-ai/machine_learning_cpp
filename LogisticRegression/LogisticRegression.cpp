@@ -22,7 +22,7 @@ std::tuple<Eigen::MatrixXd, double, double> LogisticRegression::Propagate(Eigen:
 
     double cost = static_cast<const double>((cross_entropy.array()[0])) + l2_reg_cost;
 
-    Eigen::MatrixXd dw = (Eigen::MatrixXd)(((Eigen::MatrixXd)(clearA-y.transpose()) * X)/m) + ((Eigen::MatrixXd)(lambda/m*W)).transpose();
+    Eigen::MatrixXd dw = (Eigen::MatrixXd)(((Eigen::MatrixXd)(A-y.transpose()) * X)/m) + ((Eigen::MatrixXd)(lambda/m*W)).transpose();
 
     double db = (A-y.transpose()).array().sum()/m;
 
