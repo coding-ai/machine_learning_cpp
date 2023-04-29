@@ -2,6 +2,7 @@
 #define LinearRegression_h
 
 #include <eigen3/Eigen/Dense>
+#include <vector>
 
 class LinearRegression
 {

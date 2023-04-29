@@ -4,6 +4,7 @@
 #include <iostream>
 #include <fstream>
 #include <eigen3/Eigen/Dense>
+#include <vector>
 
 class ETL
 {
